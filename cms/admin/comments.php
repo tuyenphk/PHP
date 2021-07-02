@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to Posts
+                            Welcome to Comments
                         </h1>
 
                         <?php
@@ -30,7 +30,7 @@
                                     include "includes/edit_post.php";
                                     break;
                                 default:
-                                    include "includes/view_posts.php";
+                                    include "includes/view_comments.php";
                                     break;
                             }
                         ?>
