@@ -11,7 +11,7 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <li><a href="../page.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Tuyen Pham <b class="caret"></b></a>

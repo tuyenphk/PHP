@@ -1,4 +1,5 @@
 <?php
+    // Edit post
     if (isset($_GET['p_id'])){
         $edit_post = $_GET['p_id'];
     }
@@ -19,6 +20,7 @@
         $post_content = $row['post_content'];
      }
 
+    //  Update post
     if (isset($_POST['update_post'])){
         $post_title = $_POST['post_title'];
         $post_author = $_POST['post_author'];
