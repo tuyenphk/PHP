@@ -71,6 +71,11 @@
 
                         $add_comment_query = mysqli_query($connection, $query);
                         confirmQuery($add_comment_query);
+
+                        // Increasing comments count 
+                        $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 ";
+                        $query .= "WHERE post_id = $the_post_id ";
+                        $update_comment_count = mysqli_query($connection, $query);
                     }
                 ?>
 
