@@ -13,10 +13,31 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to POsts
+                            Welcome to Posts
                         </h1>
 
-                        table>thead>tr>th*2
+                        <?php
+                            if (isset($_GET['source'])){
+                                $source = $_GET['source'];
+                            } else {
+                                $source = '';
+                            }
+                            switch ($source){
+                                case 'add_post':
+                                    include "includes/add_posts.php";
+                                    break;
+                                case '100':
+                                    echo "Nice 100";
+                                    break;
+                                case '200':
+                                    echo "Nice 200";
+                                    break;
+                                default:
+                                    include "includes/view_posts.php";
+                                    break;
+                            }
+                        ?>
+
                     </div>
                 </div>
             </div>
