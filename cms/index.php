@@ -32,7 +32,7 @@
                             // echo "<li><a href='#'>{$post_title}</a></li>"; 
                 ?>
 
-                        <!-- Comment Post -->
+                        <!-- Comment Posth  hiiii -->
                         <h2>
                             <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
                         </h2>
