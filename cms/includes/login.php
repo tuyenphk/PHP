@@ -21,7 +21,7 @@
             $db_user_lastname = $row['user_lastname'];
             $db_user_role = $row['user_role'];
         }
-        $password = crypt($password, $db_user_password);
+        // $password = crypt($password, $db_user_password);
 
         if ($username !== $db_username && $password !== $db_user_password){
             header("Location: ../index.php");
