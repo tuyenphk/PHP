@@ -1,4 +1,10 @@
-tinymce.init({selector: 'textarea'});
+$(document).ready(function() {
+    $('#summernote').summernote();
+});
+
+tinymce.init({
+    selector: "#mytextarea"
+});  
 
 $(document).ready(function(){
     $('#selectAllBoxes').click(function(event){
