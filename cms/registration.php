@@ -20,6 +20,8 @@
             // $salt = $row['randSalt'];
             // $password = crypt($password, $salt);
 
+            // $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+            
              // Password Encryption
             $hashFormat = "$2y$10$";
             $salt = "iusesomecrazystrings22";

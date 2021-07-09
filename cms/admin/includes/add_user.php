@@ -1,17 +1,11 @@
 <?php
     if (isset($_POST['add_user'])){
-        // $user_id = $_POST['user_id'];
         $user_firstname = $_POST['user_firstname'];
         $user_lastname = $_POST['user_lastname'];
         $user_role = $_POST['user_role'];
-
-        // $post_image = $_FILES['image']['name'];
-        // $post_image_temp = $_FILES['image']['tmp_name'];
-
         $user_name = $_POST['user_name'];
         $user_email = $_POST['user_email'];
         $user_password = $_POST['user_password'];
-        // $post_comment_count = 4;
 
         // move_uploaded_file($post_image_temp, "../images/$post_image" );
 
