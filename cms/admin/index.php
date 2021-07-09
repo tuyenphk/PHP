@@ -2,9 +2,9 @@
 
     <div id="wrapper">
         <?php 
-            if ($connection){
-                echo "Conn";
-            }
+            // if ($connection){
+            //     echo "Conn";
+            // }
         ?>
 
         <!-- Navigation -->
