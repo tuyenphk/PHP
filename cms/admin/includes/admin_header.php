@@ -34,4 +34,6 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+    <script src="js/jquery.js"></script>
+    
 </head>
