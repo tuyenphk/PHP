@@ -35,8 +35,7 @@
                 ?>
 
                         <h1 class="page-header">
-                            Page Heading
-                            <small>Secondary Text</small>
+                            Post
                         </h1>
 
                         <!-- First Blog Post -->
@@ -55,9 +54,7 @@
                         <hr>
 
                     <?php }
-                } else {
-                    header("Location: index.php");
-                }
+                
                 
                 ?>
 
@@ -138,8 +135,10 @@
                     </div>
                 </div>
 
+                <?php }} else {
+                    header("Location: index.php");
+                } ?>
 
-                <?php } ?>
             </div>
             <!-- Blog Sidebar Widgets Column -->
             <?php include "includes/sidebar.php"; ?>
