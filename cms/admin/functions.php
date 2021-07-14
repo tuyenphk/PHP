@@ -6,6 +6,10 @@
         } 
     }
 
+    function redirect($location){
+        return header("Locations: " . $location);
+    }
+
     function insert_categories(){
         global $connection;
         if (isset($_POST['submit'])){
@@ -88,6 +92,50 @@
         global $connection;
         return mysqli_real_escape_string($connection, trim(strip_tags($string)));
 
+    }
+
+    function isAdmin($username){
+        global $connection;
+        $query = "SELECT user_role FROM users WHERE user_name = '$username' ";
+        $result = mysqli_query($connection, $query);
+        confirmQuery($result);
+
+        $row = mysqli_fetch_array($result);
+        if ($row['user_role'] == 'admin'){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function username_exists($username){
+        global $connection;
+
+        $query = "SELECT user_name FROM users WHERE user_name = '$username' ";
+        $result = mysqli_query($connection, $query);
+        confirmQuery($result);
+
+
+        if (mysqli_num_rows($result) > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function email_exists($email){
+        global $connection;
+
+        $query = "SELECT user_email FROM users WHERE user_email = '$email' ";
+        $result = mysqli_query($connection, $query);
+        confirmQuery($result);
+
+
+        if (mysqli_num_rows($result) > 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 ?>

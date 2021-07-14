@@ -7,6 +7,12 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        if (username_exists($username)){
+            $message = "<h4 class='text-center'>User exists</h4>";
+        } elseif (email_exists($email)){
+            $message = "<h4 class='text-center'>Email exists</h4>";
+        }
+
         if (!empty($username) && !empty($email) && !empty($password)){
             $username = mysqli_real_escape_string($connection, $username);
             $email = mysqli_real_escape_string($connection, $email);
@@ -33,13 +39,11 @@
             $register_user_query = mysqli_query($connection, $query);
             confirmQuery($register_user_query);
 
-            $message = "Your Registration has been submitted";
+            // $message = "Your Registration has been submitted";
         } else {
             $message = "Fields cannot be empty";
         }
 
-    } else {
-        $message = "";
     }
 
 ?>
