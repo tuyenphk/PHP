@@ -51,7 +51,7 @@
                 </p>';
 
                 if ($mail->send()){
-                    echo "It was sent";
+                    $emailSent = true;
                 } else {
                     echo "not send";
                 }
@@ -77,7 +77,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="text-center">
-
+                            <?php if(!isset( $emailSent)): ?>
                                 <h3><i class="fa fa-lock fa-4x"></i></h3>
                                 <h2 class="text-center">Forgot Password?</h2>
                                 <p>You can reset your password here.</p>
@@ -100,9 +100,9 @@
 
                                 </div><!-- Body-->
 
-
+                            <?php else: ?>
                                 <h2>Please check your email</h2>
-
+                            <?php endIf; ?>
                         </div>
                     </div>
                 </div>
