@@ -115,7 +115,6 @@
         $result = mysqli_query($connection, $query);
         confirmQuery($result);
 
-
         if (mysqli_num_rows($result) > 0){
             return true;
         } else {
@@ -130,7 +129,6 @@
         $result = mysqli_query($connection, $query);
         confirmQuery($result);
 
-
         if (mysqli_num_rows($result) > 0){
             return true;
         } else {
@@ -138,4 +136,76 @@
         }
     }
 
+    function register_user($username, $email, $password){
+        global $connection;
+
+        if (!empty($username) && !empty($email) && !empty($password)){
+            $username = mysqli_real_escape_string($connection, $username);
+            $email = mysqli_real_escape_string($connection, $email);
+            $password = mysqli_real_escape_string($connection, $password);
+    
+            // $query = "SELECT randSalt FROM users ";
+            // $select_randsalt_query = mysqli_query($connection, $query);
+            // confirmQuery($select_randsalt_query);
+    
+            // $row = mysqli_fetch_array($select_randsalt_query);
+            // $salt = $row['randSalt'];
+            // $password = crypt($password, $salt);
+
+            // $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+            
+             // Password Encryption
+            $hashFormat = "$2y$10$";
+            $salt = "iusesomecrazystrings22";
+            $hashF_and_salt = $hashFormat . $salt;
+            $password = crypt ($password, $hashF_and_salt);
+    
+            $query = "INSERT INTO users(user_name, user_email, user_password, user_role) ";
+            $query .= "VALUES ('{$username}', '{$email}', '{$password}', 'subscriber') ";
+            $register_user_query = mysqli_query($connection, $query);
+            confirmQuery($register_user_query);
+
+            // $message = "Your Registration has been submitted";
+        } 
+        // else {
+        //     $message = "Fields cannot be empty";
+        // }
+    }
+
+    function login_user($username, $password){
+        global $connection;
+
+        $username = trim($username);
+        $password = trim($password);
+        
+        $username = mysqli_real_escape_string($connection, $username);
+        $password = mysqli_real_escape_string($connection, $password);
+
+        $query = "SELECT * FROM users WHERE user_name = '{$username}' ";
+        $select_user_query = mysqli_query($connection, $query);
+        confirmQuery($select_user_query);
+
+        while ($row = mysqli_fetch_array($select_user_query)){
+            $db_user_id = $row['user_id'];
+            $db_username = $row['user_name'];
+            $db_user_password = $row['user_password'];
+            $db_user_firstname = $row['user_firstname'];
+            $db_user_lastname = $row['user_lastname'];
+            $db_user_role = $row['user_role'];
+        }
+        // $password = crypt($password, $db_user_password);
+
+        if ($username !== $db_username && $password !== $db_user_password){
+            header("Location: ../index.php");
+        } else if ($username == $db_username && $password == $db_user_password){
+            $_SESSION['username'] = $db_username;
+            $_SESSION['firstname'] = $db_user_firstname;
+            $_SESSION['lastname'] = $db_user_lastname;
+            $_SESSION['user_role'] = $db_user_role;
+
+            header ("Location: ../admin");
+        } else {
+            header("Location: ../index.php");
+        }
+    }
 ?>
