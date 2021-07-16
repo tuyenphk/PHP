@@ -60,7 +60,7 @@
 							<h2 class="text-center">Login</h2>
 							<div class="panel-body">
 
-								<form id="login-form" role="form" autocomplete="off" class="form" method="post">
+								<form id="login-form" role="form" autocomplete="off" class="form" method="post" action="includes/login.php">
 
 									<div class="form-group">
 										<div class="input-group">
