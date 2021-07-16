@@ -13,7 +13,7 @@
     }
 
     function ifItIsMethod($method=null){
-        if (isset($_SESSION['REQUEST_METHOD']) == strtoupper($method)){
+        if ($_SERVER['REQUEST_METHOD'] == strtoupper($method)){
             return true;
         } 
         return false;
