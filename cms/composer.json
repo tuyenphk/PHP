@@ -3,6 +3,11 @@
     "require": {
         "phpmailer/phpmailer": "^6.5"
     },
+    "autoload": {
+        "classmap": [
+            "classes"
+        ]
+    },
     "authors": [
         {
             "name": "Tuyen Pham",

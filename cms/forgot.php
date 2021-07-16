@@ -7,6 +7,10 @@
     require './vendor/autoload.php';
     require './classes/config.php';
 
+    // $mail = new PHPMailer();
+    // $example = new Example();
+    // echo get_class($example);
+
     if (!ifItIsMethod('get') && !$_GET['forgot']){
         redirect('index');
     }
@@ -37,10 +41,14 @@
                 $mail->isHTML(true);
                 $mail->CharSet = 'UTF-8';
 
-                $mail->setFrom('tuyenphk@gmail.com', 'Tuyen Pham');
+                $mail->setFrom('tuyen.phk@gmail.com', 'Tuyen Pham');
                 $mail->addAddress($email);
                 $mail->Subject = 'This is a test email';
-                $mail->Body = 'Email Body';
+                $mail->Body = '<p>Please click to reset your password 
+                    
+                    <a href="http://localhost/Udemy/cms/reset.php?email='.$email.' &token=' .$token.' ">http://localhost/Udemy/cms/reset.php?email='.$email.' &token=' .$token.'</a>
+                
+                </p>';
 
                 if ($mail->send()){
                     echo "It was sent";
@@ -48,9 +56,7 @@
                     echo "not send";
                 }
 
-                // } else {
-                //     echo "Wrong";
-                // }
+
                 }
             }
         }
