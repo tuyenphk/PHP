@@ -1,3 +1,4 @@
+
 <?php
     function confirmQuery($result){
         global $connection;
@@ -7,7 +8,28 @@
     }
 
     function redirect($location){
-        return header("Locations: " . $location);
+        header("Locations: " . $location);
+        exit;
+    }
+
+    function ifItIsMethod($method=null){
+        if (isset($_SESSION['REQUEST_METHOD']) == strtoupper($method)){
+            return true;
+        } 
+        return false;
+    }
+
+    function isLoggedIn(){
+        if (isset($_SESSION['user_role'])){
+            return true;
+        }
+        return false;
+    }
+
+    function checkIfUserIsLoggedInAndRedirect($redirectLocation=null){
+        if (isLoggedIn()){
+            redirect($redirectLocation);
+        }
     }
 
     function insert_categories(){

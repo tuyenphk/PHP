@@ -67,6 +67,8 @@
         else {
             $message = "Fields cannot be empty";
         }
+    } else {
+        $message = "";
     }
 ?>
 
