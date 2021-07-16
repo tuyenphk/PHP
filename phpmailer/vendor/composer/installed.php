@@ -6,11 +6,11 @@
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'reference' => 'f0297208be78cbff6d3f9e6ceda88c8e0a6a2502',
-        'name' => 'pham_t/cms',
+        'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
-        'pham_t/cms' => array(
+        '__root__' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
             'type' => 'library',

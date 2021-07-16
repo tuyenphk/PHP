@@ -1,8 +1,12 @@
+<?php use PHPMailer\PHPMailer\PHPMailer; ?>
 <?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
 <?php include "admin/functions.php"; ?>
 
 <?php
+    require './vendor/autoload.php';
+    require './classes/config.php';
+
     if (!ifItIsMethod('get') && !$_GET['forgot']){
         redirect('index');
     }
@@ -19,10 +23,34 @@
                     mysqli_stmt_execute($stmt);
                     mysqli_stmt_close($stmt);
 
-                    
+                // Configure PHPMailer
+                $mail = new PHPMailer();
+                // echo get_class($mail);
 
+                $mail->isSMTP();
+                $mail->Host = Config::SMTP_HOST;
+                $mail->Username = Config::SMTP_USER;
+                $mail->Password = Config::SMTP_PASSWORD;
+                $mail->Port = Config::SMTP_PORT;
+                $mail->SMTPSecure = 'tls';
+                $mail->SMTPAuth = true;
+                $mail->isHTML(true);
+                $mail->CharSet = 'UTF-8';
+
+                $mail->setFrom('tuyenphk@gmail.com', 'Tuyen Pham');
+                $mail->addAddress($email);
+                $mail->Subject = 'This is a test email';
+                $mail->Body = 'Email Body';
+
+                if ($mail->send()){
+                    echo "It was sent";
                 } else {
-                    echo "Wrong";
+                    echo "not send";
+                }
+
+                // } else {
+                //     echo "Wrong";
+                // }
                 }
             }
         }
